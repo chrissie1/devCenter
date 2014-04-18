@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Form1
+Partial Class devCenter
     Inherits System.Windows.Forms.Form
 
     'Das Formular überschreibt den Löschvorgang, um die Komponentenliste zu bereinigen.
@@ -33,7 +33,7 @@ Partial Class Form1
         Me.cmd_On.Name = "cmd_On"
         Me.cmd_On.Size = New System.Drawing.Size(75, 23)
         Me.cmd_On.TabIndex = 0
-        Me.cmd_On.Text = "An"
+        Me.cmd_On.Text = "On"
         Me.cmd_On.UseVisualStyleBackColor = True
         '
         'cmd_Off
@@ -42,7 +42,7 @@ Partial Class Form1
         Me.cmd_Off.Name = "cmd_Off"
         Me.cmd_Off.Size = New System.Drawing.Size(75, 23)
         Me.cmd_Off.TabIndex = 1
-        Me.cmd_Off.Text = "Aus"
+        Me.cmd_Off.Text = "Off"
         Me.cmd_Off.UseVisualStyleBackColor = True
         '
         'labelResult
@@ -54,7 +54,7 @@ Partial Class Form1
         Me.labelResult.TabIndex = 2
         Me.labelResult.Text = "Off"
         '
-        'Form1
+        'devCenter
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -62,8 +62,8 @@ Partial Class Form1
         Me.Controls.Add(Me.labelResult)
         Me.Controls.Add(Me.cmd_Off)
         Me.Controls.Add(Me.cmd_On)
-        Me.Name = "Form1"
-        Me.Text = "Form1"
+        Me.Name = "devCenter"
+        Me.Text = "devCenter"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

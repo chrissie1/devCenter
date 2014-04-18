@@ -1,4 +1,7 @@
-﻿Public Class Form1
+﻿Imports Nancy
+Imports Nancy.Conventions
+
+Public Class devCenter
 
     Private Sub cmd_On_Click(sender As Object, e As EventArgs) Handles cmd_On.Click
         labelResult.Text = "On"
