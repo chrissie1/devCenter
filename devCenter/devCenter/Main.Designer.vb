@@ -63,7 +63,9 @@ Partial Class devCenter
         Me.Controls.Add(Me.cmd_Off)
         Me.Controls.Add(Me.cmd_On)
         Me.Name = "devCenter"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "devCenter"
+        Me.TopMost = True
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
