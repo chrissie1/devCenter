@@ -21,7 +21,11 @@ Public Class Controller
 
     Public Sub New()
 
-        MyBase.Get("/") = Function(parameters) "test"
+
+        MyBase.Get("/x") = Function(parameters)
+                               Return View("test.html", Me.Request.Url)
+                           End Function
+
 
         MyBase.Get("/list") = Function(parameters)
                                   Dim builder As New StringBuilder()
