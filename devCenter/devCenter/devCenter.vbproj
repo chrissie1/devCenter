@@ -57,10 +57,17 @@
     <Reference Include="Nancy.Hosting.Self">
       <HintPath>..\packages\Nancy.Hosting.Self.0.22.2\lib\net40\Nancy.Hosting.Self.dll</HintPath>
     </Reference>
+    <Reference Include="Nancy.ViewEngines.Razor">
+      <HintPath>..\packages\Nancy.Viewengines.Razor.0.22.2\lib\net40\Nancy.ViewEngines.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Razor.Unofficial">
+      <HintPath>..\packages\System.Web.Razor.Unofficial.2.0.2\lib\net40\System.Web.Razor.Unofficial.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -81,14 +88,19 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller.vb" />
-    <Compile Include="Main.vb">
+    <Compile Include="Controller\ViewController.vb" />
+    <Compile Include="Model\Account.vb" />
+    <Compile Include="Modules\Controller.vb" />
+    <Compile Include="Model\Playlist.vb" />
+    <Compile Include="Views\Main.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main.Designer.vb">
+    <Compile Include="Views\Main.Designer.vb">
       <DependentUpon>Main.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Model\Song.vb" />
+    <Compile Include="Model\SongCollection.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -106,7 +118,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Main.resx">
+    <EmbeddedResource Include="Views\Main.resx">
       <DependentUpon>Main.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -128,15 +140,16 @@
     </None>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <Content Include="test.html" />
-    <Content Include="Views\test.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <None Include="web.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+if $(ConfigurationName) == Debug (
+xcopy /s /y /R "$(SolutionDir)packages\Nancy.Viewengines.Razor.0.22.2\BuildProviders\Nancy.ViewEngines.Razor.BuildProviders.dll" "$(ProjectDir)bin\"
+xcopy /s /y /R "$(SolutionDir)packages\Nancy.Viewengines.Razor.0.22.2\lib\Net40\Nancy.ViewEngines.Razor.dll" "$(ProjectDir)bin\"
+)</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
