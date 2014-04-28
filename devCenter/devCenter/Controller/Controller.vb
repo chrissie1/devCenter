@@ -30,7 +30,7 @@ Public Class Controller
                                builder.AppendLine("<div class=""content"">" & vbTab)
                                builder.AppendLine("<ul>" & vbTab)
 
-                               Dim di As New DirectoryInfo("C:\temp\")
+                               Dim di As New DirectoryInfo("C:\music")
                                Dim smFiles As FileInfo() = di.GetFiles()
                                For Each fi As FileInfo In smFiles
 
@@ -46,25 +46,27 @@ Public Class Controller
                            End Function
 
         MyBase.Get("/musicshare") = Function(parameters)
-                                        Dim sc As New SongCollection()
-                                        Dim s As New Song
-                                        s.Artist = "test_Artist"
-                                        s.Genre = "test_Genre"
-                                        s.Title = "test_Title"
-                                        sc.AddSongToListOfSongs(s)
+                                        'Dim sc As New SongCollection()
+                                        'Dim s As New Song
+                                        's.Artist = "test_Artist"
+                                        's.Genre = "test_Genre"
+                                        's.Title = "test_Title"
+                                        'sc.AddSongToListOfSongs(s)
 
-                                        s = New Song()
-                                        s.Artist = "test1_Artist"
-                                        s.Genre = "test1_Genre"
-                                        s.Title = "test1_Title"
-                                        sc.AddSongToListOfSongs(s)
+                                        's = New Song()
+                                        's.Artist = "test1_Artist"
+                                        's.Genre = "test1_Genre"
+                                        's.Title = "test1_Title"
+                                        'sc.AddSongToListOfSongs(s)
 
-                                        'Dim sc As New List(Of String)
-
-                                        'sc.Add("hallo")
-                                        'sc.Add("velo")
-                                        'sc.Add("hallo2")
-                                        'sc.Add("3rad")
+                                        Dim sc As New List(Of String)
+                                        Dim di As New DirectoryInfo("C:\music")
+                                        Dim smFiles As FileInfo() = di.GetFiles()
+                                        For Each fi As FileInfo In smFiles
+                                            Dim song As String = fi.Name.Remove(fi.Name.Count - 4)
+                                            sc.Add(song)
+                                        Next
+                                        sc.Sort()
 
                                         Return View("index.vbhtml", sc)
                                     End Function
