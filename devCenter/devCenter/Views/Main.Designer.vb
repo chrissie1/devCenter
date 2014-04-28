@@ -25,6 +25,7 @@ Partial Class devCenter
         Me.cmd_On = New System.Windows.Forms.Button()
         Me.cmd_Off = New System.Windows.Forms.Button()
         Me.labelResult = New System.Windows.Forms.Label()
+        Me.lbl_IpAddress = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'cmd_On
@@ -54,11 +55,20 @@ Partial Class devCenter
         Me.labelResult.TabIndex = 2
         Me.labelResult.Text = "Off"
         '
+        'lbl_IpAddress
+        '
+        Me.lbl_IpAddress.AutoSize = True
+        Me.lbl_IpAddress.Location = New System.Drawing.Point(12, 126)
+        Me.lbl_IpAddress.Name = "lbl_IpAddress"
+        Me.lbl_IpAddress.Size = New System.Drawing.Size(0, 13)
+        Me.lbl_IpAddress.TabIndex = 3
+        '
         'devCenter
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(274, 79)
+        Me.ClientSize = New System.Drawing.Size(274, 148)
+        Me.Controls.Add(Me.lbl_IpAddress)
         Me.Controls.Add(Me.labelResult)
         Me.Controls.Add(Me.cmd_Off)
         Me.Controls.Add(Me.cmd_On)
@@ -73,5 +83,6 @@ Partial Class devCenter
     Friend WithEvents cmd_On As System.Windows.Forms.Button
     Friend WithEvents cmd_Off As System.Windows.Forms.Button
     Friend WithEvents labelResult As System.Windows.Forms.Label
+    Friend WithEvents lbl_IpAddress As System.Windows.Forms.Label
 
 End Class
