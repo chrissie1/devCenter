@@ -25,6 +25,6 @@ Public Class devCenter
 
     Private Sub devCenter_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim hostname As String = Dns.GetHostName()
-        lbl_IpAddress.Text = CType(Dns.GetHostByName(hostname).AddressList.GetValue(0), IPAddress).ToString
+        lbl_IpAddress.Text = "Eigene IP-Adresse: " & CType(Dns.GetHostByName(hostname).AddressList.GetValue(0), IPAddress).ToString
     End Sub
 End Class

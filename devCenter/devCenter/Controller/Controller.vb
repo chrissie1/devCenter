@@ -21,51 +21,16 @@ Public Class Controller
     Dim open As Boolean = False
 
     Public Sub New()
-
-        MyBase.Get("/x") = Function(parameters)
-                               Dim builder As New StringBuilder()
-                               builder.AppendLine("<!DOCTYPE HTML>" & vbTab)
-                               builder.AppendLine("<html>" & vbTab)
-                               builder.AppendLine("<body>" & vbTab)
-                               builder.AppendLine("<div class=""content"">" & vbTab)
-                               builder.AppendLine("<ul>" & vbTab)
-
-                               Dim di As New DirectoryInfo("C:\music")
-                               Dim smFiles As FileInfo() = di.GetFiles()
-                               For Each fi As FileInfo In smFiles
-
-                                   builder.AppendFormat("<li><a href=""{0}"">{1}</a></li>" & vbTab & vbLf, Path.GetFileNameWithoutExtension(fi.Name), Path.GetFileNameWithoutExtension(fi.Name))
-                               Next
-
-                               builder.AppendLine("</ul>" & vbTab)
-                               builder.AppendLine("</div>" & vbTab)
-                               builder.AppendLine("</body>" & vbTab)
-                               builder.AppendLine("</html>" & vbTab)
-
-                               Return builder.ToString()
-                           End Function
-
         MyBase.Get("/musicshare") = Function(parameters)
-                                        'Dim sc As New SongCollection()
-                                        'Dim s As New Song
-                                        's.Artist = "test_Artist"
-                                        's.Genre = "test_Genre"
-                                        's.Title = "test_Title"
-                                        'sc.AddSongToListOfSongs(s)
-
-                                        's = New Song()
-                                        's.Artist = "test1_Artist"
-                                        's.Genre = "test1_Genre"
-                                        's.Title = "test1_Title"
-                                        'sc.AddSongToListOfSongs(s)
-
                                         Dim sc As New List(Of String)
                                         Dim di As New DirectoryInfo("C:\music")
                                         Dim smFiles As FileInfo() = di.GetFiles()
+
                                         For Each fi As FileInfo In smFiles
                                             Dim song As String = fi.Name.Remove(fi.Name.Count - 4)
                                             sc.Add(song)
                                         Next
+
                                         sc.Sort()
 
                                         Return View("index.vbhtml", sc)
@@ -73,12 +38,12 @@ Public Class Controller
     End Sub
 
     Public Sub StartHosting()
-        host = New NancyHost(New Uri("http://localhost:80/"))
+        host = New NancyHost(New Uri("http://localhost:5050/"))
         host.Start()
         Dim s As New Song
 
         If Not open Then
-            Process.Start("http://localhost/musicshare")
+            Process.Start("http://localhost:5050/musicshare")
             open = True
         End If
 
