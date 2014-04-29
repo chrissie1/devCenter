@@ -1,4 +1,4 @@
-﻿@Inherits Nancy.ViewEngines.Razor.NancyRazorViewBase
+﻿@Inherits Nancy.ViewEngines.Razor.NancyRazorViewBase(of list(of String))
 <!DOCTYPE html>
 <html>
 <head>

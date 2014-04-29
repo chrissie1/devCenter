@@ -23,14 +23,16 @@ Public Class Controller
     Public Sub New()
         MyBase.Get("/musicshare") = Function(parameters)
                                         Dim sc As New List(Of String)
-                                        Dim di As New DirectoryInfo("C:\music")
-                                        Dim smFiles As FileInfo() = di.GetFiles()
+                                        'Dim di As New DirectoryInfo("C:\music")
+                                        'Dim smFiles As FileInfo() = di.GetFiles()
 
-                                        For Each fi As FileInfo In smFiles
-                                            Dim song As String = fi.Name.Remove(fi.Name.Count - 4)
-                                            sc.Add(song)
-                                        Next
-
+                                        'For Each fi As FileInfo In smFiles
+                                        '    Dim song As String = fi.Name.Remove(fi.Name.Count - 4)
+                                        'sc.Add(Song)
+                                        'Next
+                                        sc.Add("test1")
+                                        sc.Add("test2")
+                                        sc.Add("test3")
                                         sc.Sort()
 
                                         Return View("index.vbhtml", sc)
@@ -38,7 +40,9 @@ Public Class Controller
     End Sub
 
     Public Sub StartHosting()
-        host = New NancyHost(New Uri("http://localhost:5050/"))
+        Dim config = New HostConfiguration()
+        config.RewriteLocalhost = False
+        host = New NancyHost(config, New Uri("http://localhost:5050/"))
         host.Start()
         Dim s As New Song
 
