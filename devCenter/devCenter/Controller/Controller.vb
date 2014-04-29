@@ -22,7 +22,7 @@ Public Class Controller
 
     Public Sub New()
         MyBase.Get("/musicshare") = Function(parameters)
-                                        Dim sc As New List(Of String)
+                                        Dim sc As New List(Of Song)
                                         'Dim di As New DirectoryInfo("C:\music")
                                         'Dim smFiles As FileInfo() = di.GetFiles()
 
@@ -30,11 +30,10 @@ Public Class Controller
                                         '    Dim song As String = fi.Name.Remove(fi.Name.Count - 4)
                                         'sc.Add(Song)
                                         'Next
-                                        sc.Add("test1")
-                                        sc.Add("test2")
-                                        sc.Add("test3")
-                                        sc.Sort()
-
+                                        sc.Add(New Song() With {.Title = "test1"})
+                                        sc.Add(New Song() With {.Title = "test2"})
+                                        sc.Add(New Song() With {.Title = "test4"})
+                                        
                                         Return View("index.vbhtml", sc)
                                     End Function
     End Sub

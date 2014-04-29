@@ -1,4 +1,4 @@
-﻿@Inherits Nancy.ViewEngines.Razor.NancyRazorViewBase(of list(of String))
+﻿@Inherits Nancy.ViewEngines.Razor.NancyRazorViewBase(of list(of devCenter.Model.Song))
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,11 +16,11 @@
             </form>
 
             <ul data-role="listview" data-inset="true" data-filter="true" data-input="#myFilter" data-autodividers="true" data-icon="false">
-                @For Each s As String In Model
+                @For Each s As devCenter.Model.Song In Model
                     @<li>
                         <a href="#">
                             <img src="http://icons.iconarchive.com/icons/wwalczyszyn/iwindows/96/Music-Library-icon.png" />
-                            <h2>@s</h2>
+                            <h2>@s.Title</h2>
                             <p style="font-color: yellow;">5<img src="http://icons.iconarchive.com/icons/gpritiranjan/simple-christmas/24/star-icon.png" /></p>
                         </a>
                     </li>
